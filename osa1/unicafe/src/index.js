@@ -89,8 +89,6 @@ const App = () => {
         <Button onClick={handleBadClick} text="bad" />
 
         <Header header="statistics" /> 
-        
-        
         <History all={all} good={good} neutral={neutral} bad={bad} />
     </div>
   )
