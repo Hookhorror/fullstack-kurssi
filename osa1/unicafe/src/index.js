@@ -7,6 +7,16 @@ const Header = (props) => {
     )
 }
 
+const Button = (props) => {
+    console.log(props)
+    const { handleClick, text } = props
+    return (
+        <button onClick={handleClick}>
+            {text}
+        </button>
+    )
+}
+
 const App = () => {
   // tallenna napit omaan tilaansa
   const [good, setGood] = useState(0)
@@ -16,7 +26,11 @@ const App = () => {
   return (
     <div>
         <Header header="give feedback" />
-      code here
+        <Button text="good" />
+        <Button text="neutral" />
+        <Button text="bad" />
+
+        <Header header="statistics" />
     </div>
   )
 }
