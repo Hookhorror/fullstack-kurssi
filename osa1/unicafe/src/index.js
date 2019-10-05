@@ -22,12 +22,43 @@ const Statistics = (props) => {
     )
 }
 
+const History = (props) => {
+    if (props.all < 1) {
+      return (
+        <div>
+          no feedback given yet
+        </div>
+      )
+    }
+    return (
+        <div>
+        <Statistics text="good" value={props.good} />
+        <Statistics text="neutral" value={props.neutral} />
+        <Statistics text="bad" value={props.bad} />
+        <Statistics text="all" value={props.all} />
+        <Statistics text="average" value={(props.good - props.bad) / (props.all)} />
+        <Statistics text="positive" value={100 * (props.good / (props.all))} />
+        </div>
+      )
+}
+
+
 const App = () => {
   // tallenna napit omaan tilaansa
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
   const [all, setAll] = useState(0)
+
+  /*
+  const statistics = {
+      good:     good
+    , neutral:  neutral
+    , bad:      bad
+    , all:      good + neutral + bad
+
+  }
+  */
 
   const handleGoodClick = () => {
       setGood(good + 1)
@@ -51,13 +82,10 @@ const App = () => {
         <Button onClick={handleNeutralClick} text="neutral" />
         <Button onClick={handleBadClick} text="bad" />
 
-        <Header header="statistics" />  
-        <Statistics text="good" value={good} />
-        <Statistics text="neutral" value={neutral} />
-        <Statistics text="bad" value={bad} />
-        <Statistics text="all" value={all} />
-        <Statistics text="average" value={(good - bad) / (all)} />
-        <Statistics text="positive" value={100 * (good / (all))} />
+        <Header header="statistics" /> 
+        
+        
+        <History all={all} good={good} neutral={neutral} bad={bad} />
     </div>
   )
 }
