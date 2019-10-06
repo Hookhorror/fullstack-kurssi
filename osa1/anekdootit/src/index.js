@@ -6,16 +6,12 @@ import ReactDOM from 'react-dom'
 const App = (props) => {
   const [selected, setSelected] = useState(0)
   
-  const handleClick = () => {
-    console.log(Math.floor(Math.random() * 6))
+  const handleClick = (props) => {
+    const random = Math.floor(Math.random() * 6)
+    setSelected(random)
     console.log(random)
   }
 
-  const random = () => {
-    return (
-        Math.floor(Math.random() * 5)
-    )
-    }
 
   
   return (
